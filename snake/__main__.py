@@ -5,15 +5,12 @@ from pygame.locals import QUIT, KEYDOWN
 from sys import exit
 
 from snake.settings import WIDTH, HEIGHT, SCALE, BLACK, RED, GREEN
-from snake.characters import Snake, Directions, Point, Apple
-
-
-def random_point():
-    return Point(randrange(63), randrange(47))
+from snake.geometry import Directions, Point
+from snake.characters import Snake, Apple
 
 
 snake = Snake(Point(30, 30))
-apple = Apple(*random_point())
+apple = Apple(Point().random())
 direcao = Directions.LEFT
 
 
@@ -41,7 +38,7 @@ def main():
                 direcao = Directions.by(event.key)
 
         if snake[0] == apple:
-            apple = Apple(*random_point())
+            apple = Apple(Point().random())
             snake.eat()
 
         snake.turn(direcao)
