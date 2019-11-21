@@ -19,11 +19,25 @@ def test_turn():
 
     assert s.direction == Directions.LEFT
     s.turn(Directions.RIGHT)
-    assert s.direction == Directions.RIGHT
+    assert s.direction == Directions.LEFT
+
     s.turn(Directions.UP)
     assert s.direction == Directions.UP
     s.turn(Directions.DOWN)
+    assert s.direction == Directions.UP
+
+    s.turn(Directions.RIGHT)
+    assert s.direction == Directions.RIGHT
+    s.turn(Directions.LEFT)
+    assert s.direction == Directions.RIGHT
+
+    s.turn(Directions.DOWN)
     assert s.direction == Directions.DOWN
+    s.turn(Directions.UP)
+    assert s.direction == Directions.DOWN
+
+    s.turn(Directions.LEFT)
+    assert s.direction == Directions.LEFT
 
 def test_eat():
     s = Snake(Point(1, 0))

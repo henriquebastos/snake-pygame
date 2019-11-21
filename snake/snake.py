@@ -32,6 +32,9 @@ class Snake:
         self.head += self.direction
 
     def turn(self, direction):
+        if self.direction + direction == Point(0, 0):
+            return
+
         self.direction = direction
 
     def eat(self):
