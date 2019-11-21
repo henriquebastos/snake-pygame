@@ -5,18 +5,14 @@ from snake.snake import Snake, Directions
 def test_snake():
     s = Snake(Point())
     assert s.head == (0, 0)
-    assert s.tail == [(1, 0), (2, 0)]
-    assert (s[0], s[1], s[2]) == ((0, 0), (1, 0), (2, 0))
-    s[0] = (0, 1)
-    assert s[0] == (0, 1)
+    assert list(s.tail) == [(1, 0), (2, 0)]
+    assert list(s) == [(0, 0), (1, 0), (2, 0)]
 
 def test_slither():
     s = Snake(Point(1, 0))
-    assert s.head == (1, 0)
-    assert s.tail == [(2, 0), (3, 0)]
+    assert list(s) == [(1, 0), (2, 0), (3, 0)]
     s.slither()
-    assert s.head == (0, 0)
-    assert s.tail == [(1, 0), (2, 0)]
+    assert list(s) == [(0, 0), (1, 0), (2, 0)]
 
 def test_turn():
     s = Snake(Point(0, 0), direction=Directions.LEFT)
@@ -31,11 +27,8 @@ def test_turn():
 
 def test_eat():
     s = Snake(Point(1, 0))
-    assert s.head == (1, 0)
-    assert s.tail == [(2, 0), (3, 0)]
+    assert list(s) == [(1, 0), (2, 0), (3, 0)]
     s.eat()
-    assert s.head == (1, 0)
-    assert s.tail == [(2, 0), (3, 0), (0, 0)]
+    assert list(s) == [(1, 0), (2, 0), (3, 0), (0, 0)]
     s.slither()
-    assert s.head == (0, 0)
-    assert s.tail == [(1, 0), (2, 0), (3, 0)]
+    assert list(s) == [(0, 0), (1, 0), (2, 0), (3, 0)]
