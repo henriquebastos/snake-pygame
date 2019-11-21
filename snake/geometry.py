@@ -3,6 +3,7 @@ from random import randrange
 
 from pygame.locals import K_UP, K_DOWN, K_RIGHT, K_LEFT
 
+from snake.settings import WIDTH, HEIGHT
 
 class Point(namedtuple('Point', ['x', 'y'], defaults=[0, 0])):
     __slots__ = ()
@@ -15,7 +16,7 @@ class Point(namedtuple('Point', ['x', 'y'], defaults=[0, 0])):
 
     @classmethod
     def random(cls):
-        return Point(randrange(63), randrange(47))
+        return Point(randrange(WIDTH-1), randrange(HEIGHT-1))
 
 
 class Directions:
