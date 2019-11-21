@@ -3,6 +3,7 @@ import random
 from pygame.locals import QUIT, KEYDOWN, K_UP, K_DOWN, K_RIGHT, K_LEFT
 from sys import exit
 
+from snake.point import Point
 from snake.snake import Snake, Directions
 
 
@@ -16,34 +17,12 @@ def colisao(objetoA, objetoB):
 
 
 # Definindo a nossa cobra
-snake_pos = Snake((30, 30))
+snake_pos = Snake(Point(30, 30))
 
 # Definindo a nossa maçã
 apple_position = posicao_aleatoria()
 
 direcao = Directions.LEFT # Esquerda
-
-
-def eat(snake_pos):
-    global apple_position
-    # TODO: Move o teste de colisão pra fora.
-    if colisao(snake_pos[0], apple_position):
-        apple_position = posicao_aleatoria()
-        snake_pos.append((0, 0))
-
-def slither(snake_pos):
-    for i in range(len(snake_pos) - 1, 0, -1):
-        snake_pos[i] = (snake_pos[i - 1][0], snake_pos[i - 1][1])
-
-def turn(snake_pos, direcao):
-    if direcao == 0:
-        snake_pos[0] = (snake_pos[0][0], snake_pos[0][1] - 10)
-    if direcao == 1:
-        snake_pos[0] = (snake_pos[0][0], snake_pos[0][1] + 10)
-    if direcao == 2:
-        snake_pos[0] = (snake_pos[0][0] + 10, snake_pos[0][1])
-    if direcao == 3:
-        snake_pos[0] = (snake_pos[0][0] - 10, snake_pos[0][1])
 
 
 def main():
@@ -76,8 +55,7 @@ def main():
                 if event.key == K_LEFT:
                     direcao = Directions.LEFT
 
-        x, y = snake_pos[0]
-        if colisao((x*10, y*10), apple_position):
+        if colisao(snake_pos[0] * 10, apple_position):
             apple_position = posicao_aleatoria()
             snake_pos.eat()
 
@@ -86,8 +64,8 @@ def main():
 
         screen.fill((0, 0, 0))
         screen.fill((255, 0, 0), (*apple_position, 10, 10))
-        for x, y in snake_pos:
-            screen.fill((0, 255, 0), (x*10, y*10, 10, 10))
+        for p in snake_pos:
+            screen.fill((0, 255, 0), (p.x * 10, p.y * 10, 10, 10))
 
         pygame.display.update()
 
