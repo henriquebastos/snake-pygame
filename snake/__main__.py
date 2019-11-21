@@ -1,7 +1,7 @@
 from random import randrange
 
 import pygame
-from pygame.locals import QUIT, KEYDOWN, K_UP, K_DOWN, K_RIGHT, K_LEFT
+from pygame.locals import QUIT, KEYDOWN
 from sys import exit
 
 from snake.settings import WIDTH, HEIGHT, SCALE, BLACK, RED, GREEN
@@ -38,14 +38,7 @@ def main():
                 exit()
 
             if event.type == KEYDOWN:
-                if event.key == K_UP:
-                    direcao = Directions.UP
-                if event.key == K_DOWN:
-                    direcao = Directions.DOWN
-                if event.key == K_RIGHT:
-                    direcao = Directions.RIGHT
-                if event.key == K_LEFT:
-                    direcao = Directions.LEFT
+                direcao = Directions.by(event.key)
 
         if snake[0] == apple:
             apple = Apple(*random_point())
