@@ -13,9 +13,9 @@ class Point(namedtuple('Point', ['x', 'y'], defaults=[0, 0])):
     def __mul__(self, scalar):
         return Point(self.x * scalar, self.y * scalar)
 
-    def random(self):
-        self.x = randrange(63)
-        self.y = randrange(47)
+    @classmethod
+    def random(cls):
+        return Point(randrange(63), randrange(47))
 
 
 class Directions:

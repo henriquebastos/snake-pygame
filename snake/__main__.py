@@ -10,7 +10,7 @@ from snake.characters import Snake, Apple
 
 
 snake = Snake(Point(30, 30))
-apple = Apple(Point().random())
+apple = Apple(*Point.random())
 direcao = Directions.LEFT
 
 
@@ -38,7 +38,7 @@ def main():
                 direcao = Directions.by(event.key)
 
         if snake[0] == apple:
-            apple = Apple(Point().random())
+            apple = Apple(*Point.random())
             snake.eat()
 
         snake.turn(direcao)
