@@ -3,8 +3,7 @@ import random
 from pygame.locals import QUIT, KEYDOWN, K_UP, K_DOWN, K_RIGHT, K_LEFT
 from sys import exit
 
-from snake.point import Point
-from snake.snake import Snake, Directions
+from snake.characters import Snake, Directions, Point, Apple
 
 
 def posicao_aleatoria():

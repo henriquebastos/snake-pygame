@@ -1,5 +1,4 @@
-from snake.point import Point
-from snake.snake import Snake, Directions
+from snake.characters import Snake, Directions, Point
 
 
 def test_snake():

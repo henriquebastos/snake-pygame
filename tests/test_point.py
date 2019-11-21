@@ -1,4 +1,4 @@
-from snake.point import Point
+from snake.characters import Point
 
 
 def test_point():
