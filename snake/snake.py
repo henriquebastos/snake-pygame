@@ -18,13 +18,7 @@ class Snake:
         self.direction = direction
 
     def __getitem__(self, item):
-        if item == 0:
-            return self.head
-        else:
-            return self.tail[item-1]
-
-    def __len__(self):
-        return len(self.tail) + 1
+        return self.tail[item-1] if item else self.head
 
     def slither(self):
         self.tail.appendleft(self.head)
