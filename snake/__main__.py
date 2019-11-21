@@ -3,6 +3,8 @@ import random
 from pygame.locals import QUIT, KEYDOWN, K_UP, K_DOWN, K_RIGHT, K_LEFT
 from sys import exit
 
+from snake.snake import Snake, Directions
+
 
 def posicao_aleatoria():
     x = random.randint(0, 630)
@@ -14,12 +16,12 @@ def colisao(objetoA, objetoB):
 
 
 # Definindo a nossa cobra
-snake_pos = [(300, 300), (310, 300), (320, 300)]
+snake_pos = Snake((30, 30))
 
 # Definindo a nossa maçã
 apple_position = posicao_aleatoria()
 
-direcao = 3 # Esquerda
+direcao = Directions.LEFT # Esquerda
 
 
 def eat(snake_pos):
@@ -66,23 +68,26 @@ def main():
 
             if event.type == KEYDOWN:
                 if event.key == K_UP:
-                    direcao = 0
+                    direcao = Directions.UP
                 if event.key == K_DOWN:
-                    direcao = 1
+                    direcao = Directions.DOWN
                 if event.key == K_RIGHT:
-                    direcao = 2
+                    direcao = Directions.RIGHT
                 if event.key == K_LEFT:
-                    direcao = 3
+                    direcao = Directions.LEFT
 
-        eat(snake_pos)
-        slither(snake_pos)
-        turn(snake_pos, direcao)
+        x, y = snake_pos[0]
+        if colisao((x*10, y*10), apple_position):
+            apple_position = posicao_aleatoria()
+            snake_pos.eat()
 
+        snake_pos.turn(direcao)
+        snake_pos.slither()
 
         screen.fill((0, 0, 0))
         screen.fill((255, 0, 0), (*apple_position, 10, 10))
-        for pos in snake_pos:
-            screen.fill((0, 255, 0), (*pos, 10, 10))
+        for x, y in snake_pos:
+            screen.fill((0, 255, 0), (x*10, y*10, 10, 10))
 
         pygame.display.update()
 
