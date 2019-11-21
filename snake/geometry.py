@@ -5,6 +5,7 @@ from pygame.locals import K_UP, K_DOWN, K_RIGHT, K_LEFT
 
 from snake.settings import WIDTH, HEIGHT
 
+
 class Point(namedtuple('Point', ['x', 'y'], defaults=[0, 0])):
     __slots__ = ()
 

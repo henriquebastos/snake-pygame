@@ -1,5 +1,3 @@
-from random import randrange
-
 import pygame
 from pygame.locals import QUIT, KEYDOWN
 from sys import exit
@@ -37,9 +35,9 @@ def main():
             if event.type == KEYDOWN:
                 direcao = Directions.by(event.key)
 
-        if snake[0] == apple:
-            apple = Apple(*Point.random())
+        if snake.head == apple:
             snake.eat()
+            apple = Apple(*Point.random())
 
         snake.turn(direcao)
         snake.slither()
