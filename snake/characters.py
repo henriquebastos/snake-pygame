@@ -1,5 +1,6 @@
-from collections import deque, namedtuple
+from collections import deque
 
+from snake.settings import Colour
 from snake.geometry import Point, Directions
 
 
@@ -8,11 +9,11 @@ class Apple(Point):
 
 
 class Snake:
-    def __init__(self, head, direction=Directions.LEFT,
-                 length=3):
+    def __init__(self, head, direction=Directions.LEFT, length=3, colour=Colour.GREEN):
         self.head = head
         self.tail = deque(head + Point(n, 0) for n in range(1, length))
         self.direction = direction
+        self.colour = colour
 
     def __getitem__(self, item):
         return self.tail[item-1] if item else self.head
