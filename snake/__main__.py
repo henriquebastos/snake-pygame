@@ -4,6 +4,7 @@ import pygame
 from pygame.locals import QUIT, KEYDOWN, K_UP, K_DOWN, K_RIGHT, K_LEFT
 from sys import exit
 
+from snake.settings import WIDTH, HEIGHT, SCALE, BLACK, RED, GREEN
 from snake.characters import Snake, Directions, Point, Apple
 
 
@@ -15,8 +16,6 @@ snake = Snake(Point(30, 30))
 apple = Apple(*random_point())
 direcao = Directions.LEFT
 
-WIDTH, HEIGHT = 64, 48
-SCALE = 10
 
 def main():
     global snake, apple, direcao
@@ -55,10 +54,10 @@ def main():
         snake.turn(direcao)
         snake.slither()
 
-        screen.fill((0, 0, 0))
-        screen.fill((255, 0, 0), (*(apple * SCALE), SCALE, SCALE))
+        screen.fill(BLACK)
+        screen.fill(RED, (*(apple * SCALE), SCALE, SCALE))
         for p in snake:
-            screen.fill((0, 255, 0), (*(p * SCALE), SCALE, SCALE))
+            screen.fill(GREEN, (*(p * SCALE), SCALE, SCALE))
 
         pygame.display.update()
 
