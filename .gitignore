@@ -1,2 +1,4 @@
 snakenv
 .vscode
+__pycache__
+.idea
