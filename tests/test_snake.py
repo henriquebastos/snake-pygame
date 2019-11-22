@@ -7,11 +7,13 @@ def test_snake():
     assert list(s.tail) == [(1, 0), (2, 0)]
     assert list(s) == [(0, 0), (1, 0), (2, 0)]
 
+
 def test_slither():
     s = Snake(Point(1, 0))
     assert list(s) == [(1, 0), (2, 0), (3, 0)]
     s.slither()
     assert list(s) == [(0, 0), (1, 0), (2, 0)]
+
 
 def test_turn():
     s = Snake(Point(0, 0), direction=Directions.LEFT)
@@ -37,6 +39,7 @@ def test_turn():
 
     s.turn(Directions.LEFT)
     assert s.direction == Directions.LEFT
+
 
 def test_eat():
     s = Snake(Point(1, 0))
