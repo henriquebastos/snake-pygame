@@ -23,7 +23,7 @@ def main():
     clock = pygame.time.Clock()
 
     while running:
-        clock.tick(VELOCITY)  #TODO: Usar um Tick que não bloquei a execução.
+        clock.tick(VELOCITY)  #TODO: Usar um Tick que não bloqueie a execução.
 
         for event in pygame.event.get():
             if event.type == QUIT:
