@@ -30,8 +30,8 @@ def main():
                 pygame.quit()
                 exit()
 
-            if event.type == KEYDOWN:
-                direction = Directions.by(event.key)
+            elif event.type == KEYDOWN:
+                direction = Directions.by(event.key, direction)
 
         if snake.head == apple:
             snake.eat()

@@ -34,5 +34,5 @@ class Directions:
     }
 
     @classmethod
-    def by(cls, key_event):
-        return cls.direction_for_key[key_event]
+    def by(cls, key_event, direction):
+        return cls.direction_for_key.get(key_event, direction)
