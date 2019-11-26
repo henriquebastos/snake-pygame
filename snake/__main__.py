@@ -15,14 +15,12 @@ direction = Directions.LEFT
 def main():
     global snake, apple, direction
 
-    running = True
-
     pygame.init()
     screen = pygame.display.set_mode((WIDTH * SCALE, HEIGHT * SCALE), 0, 32)
     pygame.display.set_caption(GAME_CAPTION)
     clock = pygame.time.Clock()
 
-    while running:
+    while True:
         clock.tick(VELOCITY)  #TODO: Usar um Tick que não bloqueie a execução.
 
         for event in pygame.event.get():
