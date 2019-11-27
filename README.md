@@ -6,7 +6,7 @@ O projeto utiliza python e pygame.
 ## Como jogar?
 
 1. Clone o repositório.
-2. Crie um virtualenv com Python 3.8.0
+2. Crie um virtualenv com Python >= 3.7
 3. Ative o vitualenv.
 4. Instale as dependências.
 5. Execute os testes.
@@ -21,3 +21,5 @@ pip install -r requirements-dev.txt
 pytest
 python -m snake
 ```
+
+**A versão miníma do python para rodar o jogo é 3.7**
